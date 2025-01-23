@@ -311,7 +311,7 @@ if ( ! function_exists( 'storefront_homepage_header' ) ) {
 		?>
 		<header class="entry-header">
 			<?php
-			the_title( '<h1 class="entry-title">', '</h1>' );
+			the_title( '<h2 class="entry-title">', '</h2>' );
 			?>
 		</header><!-- .entry-header -->
 		<?php
@@ -684,7 +684,7 @@ if ( ! function_exists( 'storefront_header_container' ) ) {
 	 * The header container
 	 */
 	function storefront_header_container() {
-		echo '<div class="col-full">';
+		echo '<div class="header-container">';
 	}
 }
 
@@ -694,5 +694,39 @@ if ( ! function_exists( 'storefront_header_container_close' ) ) {
 	 */
 	function storefront_header_container_close() {
 		echo '</div>';
+	}
+}
+
+
+if ( ! function_exists( 'user_nav' ) ) {
+	/**
+	 * Site branding wrapper and display
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	function user_nav() {
+		?>
+		<div class="user-nav">
+    <?php if (is_user_logged_in()): ?>
+        <sapn class="user-nav-icon"></sapn>
+		<div class="user-nav-dropdown-wrapper">
+			<div class="user-nav-dropdown">
+			<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>">Profile</a>
+            <a href="<?php echo esc_url(wp_logout_url(get_permalink(get_option('woocommerce_myaccount_page_id')))); ?>">Logout</a>
+			</div>
+		</div>
+        
+    <?php else: ?>
+        <sapn class="user-nav-icon"></sapn>
+        <div class="user-nav-dropdown-wrapper">
+			<div class="user-nav-dropdown">
+				<a href="<?php echo esc_url(wc_get_page_permalink('myaccount')); ?>">Login</a>
+				<a href="<?php echo esc_url(wc_get_page_permalink('myaccount')); ?>">Register</a>
+			</div>
+        </div>
+    <?php endif; ?>
+		</div>
+	<?php
 	}
 }

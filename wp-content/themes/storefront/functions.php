@@ -69,3 +69,40 @@ if ( version_compare( get_bloginfo( 'version' ), '4.7.3', '>=' ) && ( is_admin()
  * Note: Do not add any custom code here. Please use a custom plugin so that your customizations aren't lost during updates.
  * https://github.com/woocommerce/theme-customisations
  */
+
+
+
+  /**
+ * Add google font
+ */
+
+function enqueue_google_fonts() {
+    wp_enqueue_style(
+        'google-fonts', // Handle name
+        'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet', // Google Fonts URL
+        array(),
+        null
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
+
+
+ /**
+ * Add custom.css file
+ */
+
+function enqueue_custom_styles() {
+    // Enqueue the new CSS file
+    wp_enqueue_style(
+        'custom-style',
+        get_template_directory_uri() . '/assets/css/custom-style.css',
+        array(),
+        '1.0',
+        'all'
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_custom_styles');
+
+
+
+

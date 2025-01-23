@@ -26,10 +26,12 @@ add_action( 'storefront_header', 'storefront_header_container', 0 );
 add_action( 'storefront_header', 'storefront_skip_links', 5 );
 add_action( 'storefront_header', 'storefront_site_branding', 20 );
 add_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
-add_action( 'storefront_header', 'storefront_header_container_close', 41 );
-add_action( 'storefront_header', 'storefront_primary_navigation_wrapper', 42 );
-add_action( 'storefront_header', 'storefront_primary_navigation', 50 );
-add_action( 'storefront_header', 'storefront_primary_navigation_wrapper_close', 68 );
+add_action( 'storefront_header', 'storefront_primary_navigation_wrapper', 32 );
+add_action( 'storefront_header', 'storefront_primary_navigation', 33 );
+add_action( 'storefront_header', 'storefront_primary_navigation_wrapper_close', 34 );
+add_action( 'storefront_header', 'user_nav', 35 );
+add_action( 'storefront_header', 'storefront_header_container_close', 100 );
+
 
 /**
  * Footer
@@ -91,3 +93,11 @@ add_action( 'storefront_page_after', 'storefront_display_comments', 10 );
  */
 add_action( 'storefront_homepage', 'storefront_homepage_header', 10 );
 add_action( 'storefront_homepage', 'storefront_page_content', 20 );
+
+
+/**
+ * Pages without page heading
+ *
+ * @see  storefront_page_content()
+ */
+add_action( 'storefront_page_without_heading', 'storefront_page_content', 20 );
